@@ -1,0 +1,15 @@
+# dependencies
+/node_modules
+/ui
+
+# IDE
+/.idea
+/.awcache
+/.vscode
+
+# misc
+npm-debug.log
+
+# dist
+/dist
+/distjunit.xml
