@@ -1,3 +1,4 @@
 module.exports = {
-  errorHandlingMiddleware: require('./errorHandlingMiddleware')
+  errorHandlingMiddleware: require('./errorHandlingMiddleware'),
+  authenticationMiddleware: require('./authenticationMiddleware')
 };
