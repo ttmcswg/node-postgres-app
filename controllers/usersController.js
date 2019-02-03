@@ -1,4 +1,5 @@
 const { handleDbRequest } = require('../utils/helper');
+const { RequestError } = require('../errors/errors');
 
 const getUsers = (req, res) => {
   return handleDbRequest(req, res, 'SELECT * FROM users');
@@ -14,7 +15,8 @@ const getUser = (req, res) => {
 const createUser = (req, res) => {
   const { username, password } = req.body;
 
-  return handleDbRequest(req, res, `INSERT INTO users (user_name, user_password) VALUES (${username}, ${password})`);
+  if (!(username && password)) throw new RequestError('Wrong fields.')
+  return handleDbRequest(req, res, `INSERT INTO users (user_name, user_password) VALUES ('${username}', '${password}')`);
 };
 
 module.exports = {

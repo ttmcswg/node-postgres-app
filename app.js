@@ -7,6 +7,7 @@ const routes = require('./routes/index');
 const passport = require('passport');
 const bodyParser = require('body-parser');
 const cors = require('cors');
+const { errorHandlingMiddleware } = require('./middlewares');
 
 const app = express();
 
@@ -18,6 +19,8 @@ app.use(cors());
 app.use(passport.initialize());
 
 app.use('/', routes);
+
+app.use(errorHandlingMiddleware);
 
 module.exports = app;
 

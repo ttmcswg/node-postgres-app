@@ -3,7 +3,7 @@ const pool = require('../db/pool');
 const handleDbRequest = (req, res, query = '') => {
   pool.query(query, (error, results) => {
     if (error) {
-      return res.status(400).json(error);
+      return res.status(400).json({ error: error.message });
     }
 
     if (results && results.rows.length > 0) {
