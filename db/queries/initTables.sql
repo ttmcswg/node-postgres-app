@@ -1,0 +1,19 @@
+CREATE TABLE IF NOT EXISTS users  (
+  user_id SERIAL PRIMARY KEY,
+  user_name VARCHAR(100) UNIQUE NOT NULL,
+  user_password VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS roles  (
+  role_id SERIAL PRIMARY KEY,
+  role_name VARCHAR(50) UNIQUE NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS user_roles  (
+  role_id INT,
+  user_id INT,
+  FOREIGN KEY (role_id) REFERENCES users(user_id) ON DELETE RESTRICT ON UPDATE CASCADE,
+  FOREIGN KEY (user_id) REFERENCES roles(role_id) ON DELETE RESTRICT ON UPDATE CASCADE,
+  PRIMARY KEY (user_id, role_id)
+);
+
